@@ -4,10 +4,8 @@ $(function(){
 
 // Todo Model
 // ----------
-
 // Our basic **Todo** model has `title`, `order`, and `done` attributes.
 var Todo = Backbone.Model.extend({
-
   // Default attributes for the todo item.
   defaults: function() {
     return {
@@ -20,6 +18,13 @@ var Todo = Backbone.Model.extend({
   // Toggle the `done` state of this todo item.
   toggle: function() {
     this.save({done: !this.get("done")});
+  },
+
+  // remove the title for this item
+  duplicate: function( data ) {
+    //   var view = new TodoView({model: data});
+      console.log(this);
+    //   this.$("#todo-list").append(view.render().el);
   }
 
 });
@@ -79,6 +84,7 @@ var TodoView = Backbone.View.extend({
     "click .toggle"   : "toggleDone",
     "dblclick .view"  : "edit",
     "click a.destroy" : "clear",
+    "click a.duplicate"   : "duplicate",
     "keypress .edit"  : "updateOnEnter",
     "blur .edit"      : "close"
   },
@@ -102,6 +108,11 @@ var TodoView = Backbone.View.extend({
   // Toggle the `"done"` state of the model.
   toggleDone: function() {
     this.model.toggle();
+  },
+
+  // Toggle the `"done"` state of the model.
+  duplicate: function() {
+    this.model.duplicate( this.model.clone() );
   },
 
   // Switch this view into `"editing"` mode, displaying the input field.

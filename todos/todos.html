@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Backbone.js Todos</title>
   <link rel="stylesheet" href="http://backbonejs.org/examples/todos/todos.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -48,6 +49,7 @@
       <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
       <label><%- title %></label>
       <a class="destroy"></a>
+      <a class="duplicate"></a>
     </div>
     <input class="edit" type="text" value="<%- title %>" />
   </script>

@@ -5,9 +5,9 @@ var jasmine = require('gulp-jasmine');
 
 gulp.task('scripts', function() {
   return gulp.src([
-      './libs/todo-start.js',
+      './config/todo-start.js',
       './js/*.js',
-      './libs/todo-end.js'
+      './config/todo-end.js'
     ])
     .pipe(concat('todo.js'))
     .pipe(gulp.dest('dist'));
@@ -21,6 +21,10 @@ gulp.task('compress', function() {
 
 gulp.task('test', function () {
     return gulp.src([
+        './libs/backbone.js',
+        './libs/backbone.localStorage.js',
+        './libs/underscore.js',
+        './js/*.js',
         './spec/*.js'
         ])
         .pipe(jasmine());

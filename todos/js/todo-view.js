@@ -15,6 +15,7 @@ var TodoView = Backbone.View.extend({
     "click .toggle"   : "toggleDone",
     "dblclick .view"  : "edit",
     "click a.destroy" : "clear",
+    "click a.duplicate"   : "duplicate",
     "keypress .edit"  : "updateOnEnter",
     "blur .edit"      : "close"
   },
@@ -38,6 +39,11 @@ var TodoView = Backbone.View.extend({
   // Toggle the `"done"` state of the model.
   toggleDone: function() {
     this.model.toggle();
+  },
+
+  // Toggle the `"done"` state of the model.
+  duplicate: function() {
+    this.model.duplicate( this.model.clone() );
   },
 
   // Switch this view into `"editing"` mode, displaying the input field.
